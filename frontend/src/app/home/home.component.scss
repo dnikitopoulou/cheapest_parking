@@ -1,0 +1,60 @@
+.search-area {
+  border: 1px solid #631940 ;
+  background-color: rgba(142, 34, 92, 0.08);
+  padding: 1em;
+}
+
+.search-tab {
+  padding: 1em;
+  height: 280px;
+}
+
+.mapper {
+  position:absolute;
+  float: right;
+  width: 430px;
+  height: 350px;
+}
+
+.map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: #ccc;
+}
+
+.pointer{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background: red;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

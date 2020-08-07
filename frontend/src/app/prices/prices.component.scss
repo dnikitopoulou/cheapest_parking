@@ -1,0 +1,54 @@
+.search-area {
+  border: 1px solid #631940 ;
+  background-color: rgba(142, 34, 92, 0.08);
+  padding: 1em;
+}
+
+.search-tab {
+  padding: 1em;
+  height: 280px;
+}
+
+.mapper {
+  position:absolute;
+  float: right;
+  width: 430px;
+  height: 350px;
+}
+
+.map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: #ccc;
+}
+
+.pointer{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background: red;
+}
+
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #631940;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    background: #631940;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    background: #CE5D99;
+  }
+}

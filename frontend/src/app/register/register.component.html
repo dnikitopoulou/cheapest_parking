@@ -1,0 +1,61 @@
+<div class="ibox">
+  <div class="ibox-head">
+    <h1 class="ibox-title">Εγγραφή</h1>
+  </div>
+  <div class="ibox-body">
+    <div *ngIf="!success" >
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="input-container">
+          <input type="text" placeholder="Όνομα" formControlName="name" class="input-field">
+        </div>
+
+        <label class="input-container">
+          <input type="text" placeholder="Όνομα χρήστη" formControlName="username" class="input-field">
+          <div *ngIf="submitted && registerForm.controls.username.errors" class="error">
+            <div *ngIf="registerForm.controls.username.errors.required">Το όνομα χρήστη είναι απαραίτητο</div>
+          </div>
+        </label>
+
+        <label class="input-container">
+          <input type="email" placeholder="Email" formControlName="email" class="input-field">
+          <div *ngIf="submitted && registerForm.controls.email.errors" class="error">
+            <div *ngIf="registerForm.controls.email.errors.required">Το email είναι απαραίτητο</div>
+            <div *ngIf="registerForm.controls.email.errors.email">Το email δεν είναι έγκυρο</div>
+          </div>
+        </label>
+
+        <label class="input-container">
+          <input type="password" placeholder="Κωδικός" formControlName="password" class="input-field">
+          <div *ngIf="submitted && registerForm.controls.password.errors" class="error">
+            <div *ngIf="registerForm.controls.password.errors.required">Ο κωδικός είναι απαραίτητος</div>
+          </div>
+        </label>
+
+        <label class="form-group text-left" style="margin-bottom: 15px;">
+          <input type="checkbox" formControlName="agree"> &nbsp; Συμφωνώ με τους όρους χρήσης
+          <div *ngIf="submitted && registerForm.controls.agree.errors" class="error">
+            <div *ngIf="registerForm.controls.agree.errors.required">Παρακαλώ συμφώνησε με τους όρους χρήσης για να συνεχίσεις</div>
+          </div>
+        </label>
+
+        <input type="submit" value="Εγγραφή" class="cta" style="width: 30%;">
+      </form>
+
+      <div style="text-align: center; margin-top:20px; width: 30%;">
+        Είσαι ήδη χρήστης;
+        <a [routerLink]="['/login']" style="color:#4E022A;">Συνδέσου!</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="success&&logged" class="results" style="width: 30%;">
+    <h1 *ngIf="success"><strong>Καλώς όρισες, {{user.username}}!</strong></h1>
+  </div>
+
+  <div *ngIf="!logged&&success">
+    <h1><strong>Κάτι πήγε στραβά...</strong></h1>
+    <a (click)="retry()" style="color:#4E022A;">Προσπάθησε ξανά με άλλο username</a>
+  </div>
+
+
+</div>

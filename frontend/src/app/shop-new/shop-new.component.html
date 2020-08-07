@@ -1,0 +1,81 @@
+<div class="ibox">
+  <div class="ibox-head">
+    <h1 class="ibox-title">Προσθήκη νέου καταστήματος</h1>
+  </div>
+  <div class="ibox-body">
+    <h1 *ngIf="success"><strong>Προσθήκη επιτυχής!</strong></h1>
+    <p *ngIf="!success">Βρες το κατάστημα που θέλεις να προσθέσεις στο χάρτη και μετακίνησε τον ώστε η κόκκινη τελίτσα να δείχνει εκεί που θες! <br>
+    Μετά συμπλήρωσε τα υπόλοιπα στοιχεία του καταστήματος στη φόρμα.</p>
+
+    <div class="mapper">
+      <div id="map" class="map"></div>
+      <div class="pointer"></div>
+    </div>
+
+    <div *ngIf="!success" style="float:right; width:40%; padding-right: 30px;">
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" accept-charset="ISO-8859-1">
+        <label>
+          Όνομα:
+          <input type="text" name="name" formControlName="name" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+            <div *ngIf="messageForm.controls.name.errors.required">Το όνομα είναι απαραίτητο</div>
+          </div>
+        </label>
+
+        <label>
+          Διεύθυνση:
+          <input type="text" name="address" value="{{address}}" formControlName="address" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.address.errors" class="error">
+            <div *ngIf="messageForm.controls.address.errors.required">Η διεύθυνση είναι απαραίτητη</div>
+          </div>
+        </label>
+
+        <label>
+          Tags(παραθέστε στη μορφή α,β,γ):
+          <input type="text" name="tags" formControlName="tags" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.tags.errors" class="error">
+            <div *ngIf="messageForm.controls.tags.errors.required">Τα tags είναι απαραίτητα</div>
+          </div>
+        </label>
+
+        <input type="submit" value="Προσθήκη" class="cta">
+
+      </form>
+    </div>
+
+    <div *ngIf="success" style="float:right; width:40%; padding-right: 30px;">
+      <h3>Κατάστημα:</h3>
+      <table class="table table-striped table-bordered table-hover" id="shop-table" cellspacing="0">
+        <tr>
+          <th>Id</th>
+          <td>{{shop.id }}</td>
+        </tr>
+        <tr>
+          <th>Όνομα</th>
+          <td>{{shop.name }}</td>
+        </tr>
+        <tr>
+          <th>Διεύθυνση</th>
+          <td>{{shop.address }}</td>
+        </tr>
+        <tr>
+          <th>Γεωγραφικό μήκος</th>
+          <td>{{shop.lng }}</td>
+        </tr>
+        <tr>
+          <th>Γεωγραφικό πλάτος</th>
+          <td>{{shop.lat }}</td>
+        </tr>
+        <tr>
+          <th>Ανενεργό</th>
+          <td>{{shop.withdrawn }}</td>
+        </tr>
+        <tr>
+          <th>Tags</th>
+          <td>{{shop.tags }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,83 @@
+<div class="ibox">
+  <div class="ibox-head">
+    <h1 class="ibox-title">Προσθήκη νέου προϊόντος</h1>
+  </div>
+  <div class="ibox-body">
+
+    <div *ngIf="!success" >
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" accept-charset="utf-8">
+        <label>
+          Όνομα:
+          <input type="text" name="name" formControlName="name" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+            <div *ngIf="messageForm.controls.name.errors.required">Το όνομα είναι απαραίτητο</div>
+          </div>
+        </label>
+
+        <label>
+          Περιγραφή:
+          <input type="text" name="description" formControlName="description" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.description.errors" class="error">
+            <div *ngIf="messageForm.controls.description.errors.required">Η περιγραφή είναι απαραίτητη</div>
+          </div>
+        </label>
+
+        <label>
+          Κατηγορία:
+          <select name="cat" formControlName="category" class="new-sel">
+            <option selected="selected" disabled="disabled">Επίλεξε κατηγορία</option>
+            <option *ngFor="let cat of category" [value]="cat">
+              {{ cat }}
+            </option>
+          </select>
+          <div *ngIf="submitted && messageForm.controls.category.errors" class="error">
+            <div *ngIf="messageForm.controls.category.errors.required">Η κατηγορία είναι απαραίτητη</div>
+          </div>
+        </label>
+
+        <label>
+          Tags(παραθέστε στη μορφή α,β,γ):
+          <input type="textarea" name="tags" formControlName="tags" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.tags.errors" class="error">
+            <div *ngIf="messageForm.controls.tags.errors.required">Τα tags είναι απαραίτητα</div>
+          </div>
+        </label>
+
+        <input type="submit" value="Προσθήκη" class="cta">
+
+      </form>
+    </div>
+
+
+    <div *ngIf="success">
+      <h1><strong>Προσθήκη επιτυχής!</strong></h1>
+      <h3>Προϊόν:</h3>
+      <table class="table table-striped table-bordered table-hover" id="product-table" cellspacing="0" width="30%">
+        <tr>
+          <th>Id</th>
+          <td>{{ prod.id }}</td>
+        </tr>
+        <tr>
+          <th>Όνομα</th>
+          <td>{{prod.name }}</td>
+        </tr>
+        <tr>
+          <th>Περιγραφή</th>
+          <td>{{prod.description }}</td>
+        </tr>
+        <tr>
+          <th>Κατηγορία</th>
+          <td>{{prod.category }}</td>
+        </tr>
+        <tr>
+          <th>Ανενεργό</th>
+          <td>{{prod.withdrawn }}</td>
+        </tr>
+        <tr>
+          <th>Tags</th>
+          <td>{{prod.tags }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

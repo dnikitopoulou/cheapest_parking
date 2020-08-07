@@ -1,0 +1,83 @@
+<div class="ibox">
+  <div class="ibox-head">
+    <h1 class="ibox-title">Προσθήκη νέας τιμής</h1>
+  </div>
+  <div class="ibox-body">
+
+    <div *ngIf="!success" >
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+        <label>
+          Προϊόν:
+          <select *ngIf="myprods" id="prod" (change)="onProdSelect($event)" class="new-sel">
+            <option selected="selected" disabled="disabled">Επίλεξε προϊόν</option>
+            <option *ngFor="let prod of myprods.products" [value]="prod.id">
+              {{ prod.id}}:{{ prod.name }}
+            </option>
+          </select>
+        </label>
+
+        <label>
+          Κατάστημα:
+          <select *ngIf="myshops" id="shop" (change)="onShopSelect($event)" class="new-sel">
+            <option selected="selected" disabled="disabled">Επίλεξε κατάστημα</option>
+            <option *ngFor="let shop of myshops.shops" [value]="shop.id">
+              {{ shop.id}}:{{ shop.name }}-{{shop.address}}
+            </option>
+          </select>
+        </label>
+
+        <label>
+          Τιμή:
+          <input type="text" name="price" formControlName="price" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.price.errors" class="error">
+            <div *ngIf="messageForm.controls.price.errors.required">Η τιμή είναι απαραίτητη και θετικός αριθμός</div>
+          </div>
+        </label>
+
+        <label>
+          Ημερομηνία λήξης (Για ισχύ εντός της σημερινής ημέρας να αφεθεί κενό):
+          <input type="date" name="dateTo" formControlName="dateTo" class="my-input">
+          <div *ngIf="submitted && messageForm.controls.dateTo.errors" class="error">
+            <div *ngIf="messageForm.controls.dateTo.errors.required">Η κατηγορία είναι απαραίτητη</div>
+          </div>
+        </label>
+
+        <input type="submit" value="Προσθήκη" class="cta">
+
+      </form>
+    </div>
+
+
+    <div *ngIf="success">
+      <h1><strong>Προσθήκη επιτυχής!</strong></h1>
+      <h3>Τιμή:</h3>
+      <table class="table table-striped table-bordered table-hover" id="product-table" cellspacing="0" width="30%">
+        <tr>
+          <th>Id</th>
+          <td>{{ pric.id }}</td>
+        </tr>
+        <tr>
+          <th>Αξία</th>
+          <td>{{pric.price }}</td>
+        </tr>
+        <tr>
+          <th>Ημερομηνία έναρξης</th>
+          <td>{{pric.dateFrom }}</td>
+        </tr>
+        <tr>
+          <th>Ημερομηνία λήξης</th>
+          <td>{{pric.dateTo }}</td>
+        </tr>
+        <tr>
+          <th>Προϊόν</th>
+          <td>{{pric.productId }}</td>
+        </tr>
+        <tr>
+          <th>Κατάστημα</th>
+          <td>{{pric.shopId }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
