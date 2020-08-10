@@ -1,5 +1,5 @@
 # cheapest_parking
-Prices Observatory for Parking Spots based on Crowdsourcing
+Prices Observatory for Parking Spots based on Crowdsourcing - Software Engineering Course
 
 A web-based app with RESTful API
 
